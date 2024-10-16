@@ -12,4 +12,16 @@ const sendOtp = async (mobile) => {
   
 };
 
-export { sendOtp };
+const checkOtp = async (mobile,code)=>{
+  console.log(mobile,code)
+  try {
+    const responses = await api.post("auth/check-otp",{mobile,code})
+    return {responses}
+  } catch (error) {
+    return {error}
+  }
+}
+
+
+
+export { sendOtp,checkOtp };

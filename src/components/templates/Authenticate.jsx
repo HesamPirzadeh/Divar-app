@@ -1,9 +1,15 @@
 import React from "react";
+import { checkOtp } from "../../services/auth";
 
 function Authenticate({ sms, setSms, setStep, mobile }) {
-  const submitHandler = (e) => {
+  const submitHandler =async (e) => {
     e.preventDefault();
     console.log({ sms, mobile });
+    if(sms.length!== 5)return
+
+    const {responses, error} = await checkOtp(mobile,sms)
+    console.log({responses})
+    if(error) console.log(error.message)
   };
   return (
     <div>
