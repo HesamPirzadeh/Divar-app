@@ -10,7 +10,7 @@ function AuthPage() {
   return (
     <div>
         {step ===1 && <Mobile mobile={mobile} setMobile={setMobile} setStep={setStep}/> }
-        {step === 2 && <Authenticate/>}
+        {step === 2 && <Authenticate sms={sms} setSms={setSms} setStep={setStep} mobile={mobile}/>}
     </div>
   )
 }
