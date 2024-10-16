@@ -1,13 +1,13 @@
 import React from "react";
 import { sendOtp } from "../../services/auth";
 
-function Mobile({ setMobile, mobiles, setStep }) {
+function Mobile({ setMobile, mobile, setStep }) {
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (mobiles.length !== 11) return;
+    if (mobile.length !== 11) return;
 
-    const { response, error } = await sendOtp(mobiles);
-    if (response) setStep(2);
+    const { response, error } = await sendOtp(mobile);
+    if (response)setStep(2);
     console.log({ response,error });
     if (error) console.log(error.message);
   };
@@ -24,7 +24,7 @@ function Mobile({ setMobile, mobiles, setStep }) {
           type="text"
           id="input"
           placeholder="شماره را وارد کنید..."
-          value={mobiles}
+          value={mobile}
           onChange={(e) => setMobile(e.target.value)}
         />
         <button type="submit">کلیک کنید</button>

@@ -4,12 +4,12 @@ import Mobile from '../components/templates/Mobile'
 
 function AuthPage() {
     const [step,setStep]= useState(1)
-    const [mobiles,setMobile]= useState("")
+    const [mobile,setMobile]= useState("")
     const [sms,setSms]= useState("")
+   
   return (
     <div>
-        
-        {step ===1 && <Mobile mobiles={mobiles} setMobile={setMobile} setStep={setStep}/> }
+        {step ===1 && <Mobile mobile={mobile} setMobile={setMobile} setStep={setStep}/> }
         {step === 2 && <Authenticate/>}
     </div>
   )
