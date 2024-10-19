@@ -1,6 +1,5 @@
-import React from "react";
+import { setCookie } from "src/utils/cookie";
 import { checkOtp } from "../../services/auth";
-import { setCookie } from "../../utils/cookie";
 
 function Authenticate({ sms, setSms, setStep, mobile }) {
   const submitHandler = async (e) => {
