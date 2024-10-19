@@ -1,15 +1,17 @@
 import React from "react";
 import { checkOtp } from "../../services/auth";
+import { setCookie } from "../../utils/cookie";
 
 function Authenticate({ sms, setSms, setStep, mobile }) {
-  const submitHandler =async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     console.log({ sms, mobile });
-    if(sms.length!== 5)return
+    if (sms.length !== 5) return;
 
-    const {responses, error} = await checkOtp(mobile,sms)
-    console.log({responses})
-    if(error) console.log(error.message)
+    const { responses, error } = await checkOtp(mobile, sms);
+    console.log({ responses });
+    if (responses) setCookie(responses.data);
+    if (error) console.log(error.message);
   };
   return (
     <div>
