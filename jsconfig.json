@@ -10,7 +10,8 @@
       "pages/*": ["/pages/*"],
       "styles/*": ["/styles/*"],
       "utils/*": ["/utils/*"],
-      "services/*": ["/services/*"]
+      "services/*": ["/services/*"],
+      "router/*": ["/router/*"]
     }
   }
 }
