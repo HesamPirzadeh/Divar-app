@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Authenticate from '../components/templates/Authenticate'
+import Authenticate from 'components/templates/Authenticate'
 import Mobile from 'components/templates/Mobile'
 
 function AuthPage() {
