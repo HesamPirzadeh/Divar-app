@@ -8,11 +8,11 @@ const setCookie = (token) => {
   }`;
 };
 
-const getCookie = (token) => {
+const getCookie = (tk) => {
   return document.cookie
     .split(";")
-    .find((t) => t.trim().split("=")[0] === token).split("=")[1];
-  
+    .find((tok) => tok.trim().split("=")[0] === tk)
+    ?.split("=")[1];
 };
 
 export { setCookie, getCookie };

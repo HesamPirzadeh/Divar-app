@@ -1,7 +1,4 @@
-import api from "config/api";
-import { getCookie } from "utils/cookie";
-
-console.log(getCookie("accessToken"))
+import api from "config/apiURL";
 
 const getProfile = () => api.get("user/whoami");
 

@@ -1,27 +1,26 @@
-import api from "config/api";
+import api from "config/apiURL";
+
 
 const sendOtp = async (mobile) => {
   console.log(mobile);
   try {
-    const response = await api.post("auth/send-otp", { mobile});
-    
-    return {response}
+    const response = await api.post("auth/send-otp", { mobile });
+    console.log(response);
+    return { response };
   } catch (error) {
     return { error };
   }
-  
 };
 
-const checkOtp = async (mobile,code)=>{
-  console.log(mobile,code)
+const checkOtp = async (mobile, code) => {
+  console.log(mobile, code);
   try {
-    const responses = await api.post("auth/check-otp",{mobile,code})
-    return {responses}
+    const responses = await api.post("auth/check-otp", { mobile, code });
+    console.log(responses)
+    return { responses };
   } catch (error) {
-    return {error}
+    return { error };
   }
-}
+};
 
-
-
-export { sendOtp,checkOtp };
+export { sendOtp, checkOtp };
