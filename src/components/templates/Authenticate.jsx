@@ -1,7 +1,16 @@
 import { setCookie } from "src/utils/cookie";
 import { checkOtp } from "../../services/auth";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getProfile } from "services/user";
 
 function Authenticate({ sms, setSms, setStep, mobile }) {
+  const { refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: getProfile,
+  });
+
+  const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
     console.log({ sms, mobile });
@@ -10,6 +19,8 @@ function Authenticate({ sms, setSms, setStep, mobile }) {
     const { responses, error } = await checkOtp(mobile, sms);
     console.log({ responses });
     if (responses) setCookie(responses.data);
+    navigate("/");
+    refetch()
     if (error) console.log(error.message);
   };
   return (

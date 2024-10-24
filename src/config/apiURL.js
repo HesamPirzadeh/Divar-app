@@ -31,6 +31,7 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       const result = await newAccToken();
+      console.log(result)
       if (!result?.response) return;
       setCookie(result.response.data);
 

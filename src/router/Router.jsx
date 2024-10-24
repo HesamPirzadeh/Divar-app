@@ -13,7 +13,9 @@ function Router() {
     queryKey: ["users"],
     queryFn: getProfile,
   });
-  // console.log({ data, isLoading, error });
+  console.log({ data, isLoading, error });
+
+  if(isLoading) return <h3>Loading...</h3>
   return (
     <div>
       <Routes>
