@@ -9,7 +9,9 @@ export const paths = [
   "styles",
   "utils",
   "assets",
-  "router"
+  "router",
+  "css",
+  "module"
 ];
 
 
