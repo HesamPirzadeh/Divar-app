@@ -11,7 +11,8 @@ export const paths = [
   "assets",
   "router",
   "css",
-  "module"
+  "module",
+  "Layout"
 ];
 
 
