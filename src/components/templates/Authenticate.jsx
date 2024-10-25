@@ -1,8 +1,10 @@
-import { setCookie } from "src/utils/cookie";
-import { checkOtp } from "../../services/auth";
+import { setCookie } from "utils/cookie";
+import { checkOtp } from "services/auth";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "services/user";
+
+import styles from "css/Authenticate.module.css"
 
 function Authenticate({ sms, setSms, setStep, mobile }) {
   const { refetch } = useQuery({
@@ -24,8 +26,8 @@ function Authenticate({ sms, setSms, setStep, mobile }) {
     if (error) console.log(error.message);
   };
   return (
-    <div>
-      <form onSubmit={submitHandler}>
+    <div >
+      <form onSubmit={submitHandler} className={styles.form}>
         <p>تایید کد اس ام اس شده</p>
         <span>{`${mobile}`}-کد فرستاده شده به شماره </span>
         <br />
@@ -37,8 +39,8 @@ function Authenticate({ sms, setSms, setStep, mobile }) {
           value={sms}
           onChange={(e) => setSms(e.target.value)}
         />
-        <button onClick={() => setStep(1)}>تغییر شماره</button>
         <button type="submit">تایید کد</button>
+        <button onClick={() => setStep(1)} className={styles.backButton}> تغییر شماره موبایل</button>
       </form>
     </div>
   );

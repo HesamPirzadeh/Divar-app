@@ -1,6 +1,8 @@
 import React from "react";
 import { sendOtp } from "../../services/auth";
 
+import styles from "css/Mobile.module.css"
+
 function Mobile({ setMobile, mobile, setStep }) {
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -13,12 +15,12 @@ function Mobile({ setMobile, mobile, setStep }) {
   };
   return (
     <div>
-      <form onSubmit={submitHandler}>
-        <p>وزود به حساب کاربری</p>
-        <p>
+      <form onSubmit={submitHandler} className={styles.form}>
+        <p>ورود به حساب کاربری</p>
+        <span>
           برای استفاده از امکانات دیوار,لطفا شماره موبایل خود را وارد کنید. کد
           تایید به این شماره پیامک خواهد شد.
-        </p>
+        </span>
         <label htmlFor="input">شماره را وارد کنید</label>
         <input
           type="text"
@@ -27,7 +29,7 @@ function Mobile({ setMobile, mobile, setStep }) {
           value={mobile}
           onChange={(e) => setMobile(e.target.value)}
         />
-        <button type="submit">کلیک کنید</button>
+        <button type="submit">ارسال کد تایید</button>
       </form>
     </div>
   );
