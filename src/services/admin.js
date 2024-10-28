@@ -1,6 +1,10 @@
 import api from "config/apiURL";
 
-const category =async (data) => await api.post("/category",data)
+const addCategory =(data) => api.post("category",data)
+
+const getCategory =()=> api.get("category")
 
 
-export {category}
+
+
+export {addCategory,getCategory}

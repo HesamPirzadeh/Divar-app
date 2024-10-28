@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import styles from "css/Category.module.css";
 import { useMutation } from "@tanstack/react-query";
-import { category } from "services/admin";
+import { addCategory } from "services/admin";
 
 function Category() {
   const [input, setInput] = useState({ name: "", icon: "", slug: "" });
-  const { mutate, isLoading, error, data } = useMutation(category);
+  const { mutate, isLoading, error, data } = useMutation(addCategory);
 
   console.log({ isLoading, error, data });
 
