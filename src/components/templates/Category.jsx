@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 
 import styles from "css/Category.module.css";
-import { useMutation } from "@tanstack/react-query";
+import {  useMutation, useQueryClient } from "@tanstack/react-query";
 import { addCategory } from "services/admin";
 
 function Category() {
+  const queryClient =  useQueryClient();
+
   const [input, setInput] = useState({ name: "", icon: "", slug: "" });
-  const { mutate, isLoading, error, data } = useMutation(addCategory);
+  const { mutate, isLoading, error, data } = useMutation(addCategory, {
+    onSuccess: () => queryClient.invalidateQueries("admin"),
+  });
 
   console.log({ isLoading, error, data });
 
