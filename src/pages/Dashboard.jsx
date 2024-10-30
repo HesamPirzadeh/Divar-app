@@ -1,9 +1,12 @@
-import React from 'react'
+import AddPost from "components/templates/AddPost";
+import React from "react";
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
-  )
+    <div>
+      <AddPost />
+    </div>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
