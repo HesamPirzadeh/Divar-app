@@ -2,7 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getCategory } from "services/admin";
 
-import styles from "css/AddPost.module.css"
+import styles from "css/AddPost.module.css";
+import axios from "axios";
+import { getCookie } from "utils/cookie";
 
 function AddPost() {
   const [form, setForm] = useState({
@@ -14,7 +16,6 @@ function AddPost() {
     file: null,
   });
 
-
   const { data, isLoading } = useQuery({
     queryKey: ["admin"],
     queryFn: getCategory,
@@ -23,19 +24,33 @@ function AddPost() {
   console.log(data);
 
   const changeHandler = (e) => {
-    const name = e.target.name
+    const name = e.target.name;
     if (name !== "file") {
-        setForm({...form,[name]:e.target.value})
-    }else{
-        setForm({...form,[name]:e.target.files[0]})
+      setForm({ ...form, [name]: e.target.value });
+    } else {
+      setForm({ ...form, [name]: e.target.files[0] });
     }
-  
-    
   };
 
   const addHandler = (e) => {
     e.preventDefault();
     console.log(form);
+
+    const newForm = new FormData();
+    for (const i in form) {
+      newForm.append(i,form[i]);
+    }
+    const token = getCookie("accessToken");
+
+    axios
+      .post(`http://localhost:3400/post/create`, newForm, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `brear ${token}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
