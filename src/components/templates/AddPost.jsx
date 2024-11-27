@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getCategory } from "services/admin";
-
-import styles from "css/AddPost.module.css";
 import axios from "axios";
 import { getCookie } from "utils/cookie";
+import toast from "react-hot-toast";
 
+import styles from "css/AddPost.module.css";
 function AddPost() {
   const [form, setForm] = useState({
     title: "",
@@ -15,6 +15,7 @@ function AddPost() {
     category: null,
     file: null,
   });
+  console.log(getCookie("accessToken"))
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin"],
@@ -32,26 +33,28 @@ function AddPost() {
     }
   };
 
-  const addHandler = (e) => {
+  const addHandler = async (e) => {
     e.preventDefault();
     console.log(form);
 
-    const newForm = new FormData();
-    for (const i in form) {
-      newForm.append(i,form[i]);
+    const formData = new FormData();
+    for (let i in form) {
+      formData.append(i, form[i]);
     }
     const token = getCookie("accessToken");
 
+    const BASE_URL = "http://localhost:3400/";
+
     axios
-      .post(`http://localhost:3400/post/create`, newForm, {
+      .post(`${BASE_URL}post/create`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `brear ${token}`,
+          Authorization: `bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+      .then((res) => console.log(toast.success(res.data.message)))
+      .catch((error) => toast.error("با مشکل برخورد"));
+  }
 
   return (
     <form onChange={changeHandler} className={styles.form}>
