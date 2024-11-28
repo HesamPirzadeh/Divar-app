@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "module/Loader";
 import React from "react";
 import { getDashboard } from "services/user";
+import { sp } from "utils/number";
 
 function Post() {
   const baseURL = "http://localhost:3400/";
@@ -23,8 +24,8 @@ function Post() {
                 <p> {i.options.title}</p>
                 <span>{i.options.content}</span>
                 <div>
-                  <p>{i.createdAt}</p>
-                  <span>{i.amount} تومان</span>
+                  <p>{new Date(i.createdAt).toLocaleDateString("fa-IR")}</p>
+                  <span>{sp(i.amount)} تومان</span>
                 </div>
               </div>
             </div>
