@@ -1,11 +1,7 @@
-import React from 'react'
-import { getCookie } from 'utils/cookie'
+import React from "react";
 
 function Home() {
-  console.log( getCookie("accessToken"))
-  return (
-    <div>Home</div>
-  )
+  return <div>Home</div>;
 }
 
-export default Home
+export default Home;
