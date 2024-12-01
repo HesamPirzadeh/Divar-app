@@ -3,11 +3,8 @@ import { getCategory } from "services/admin";
 
 import styles from "../../css/SideBar.module.css"
 
-function SideBar() {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["admin"],
-    queryFn: getCategory,
-  });
+function SideBar({data}) {
+  
   console.log(data);
 
 
