@@ -19,7 +19,7 @@ function Authenticate({ sms, setSms, setStep, mobile }) {
     if (sms.length !== 5) return;
 
     const { responses, error } = await checkOtp(mobile, sms);
-    console.log({ responses });
+    // console.log({ responses });
     if (responses) setCookie(responses.data);
     navigate("/");
     refetch()

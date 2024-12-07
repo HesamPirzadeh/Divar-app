@@ -15,7 +15,7 @@ function AddPost() {
     category: null,
     file: null,
   });
-  console.log(getCookie("accessToken"))
+  console.log(getCookie("accessToken"));
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin"],
@@ -54,7 +54,7 @@ function AddPost() {
       })
       .then((res) => console.log(toast.success(res.data.message)))
       .catch((error) => toast.error("با مشکل برخورد"));
-  }
+  };
 
   return (
     <form onChange={changeHandler} className={styles.form}>

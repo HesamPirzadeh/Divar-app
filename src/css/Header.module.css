@@ -21,11 +21,17 @@
   align-items: center;
   color: grey;
   height: 50px;
+  margin-left: 30px;
 }
 
-.header span p {
+.header span button {
   margin-right: 5px;
   font-size: 0.9rem;
+  border: none;
+  background-color: #fff;
+  color: grey;
+  cursor: pointer;
+  position: relative;
 }
 
 .button {
@@ -37,4 +43,32 @@
   text-align: center;
   border-radius: 5px;
   margin-right: 40px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 2px solid rgb(197, 197, 197);
+  border-radius: 5px;
+  width: 150px;
+  position: absolute;
+  top: 4rem;
+  padding: 5px;
+  padding-right: 10px;
+  margin-right: -10px;
+}
+
+.exit {
+  margin: auto;
+  font-size: 0.9rem;
+  border: none;
+  background-color: #fff;
+  color: grey;
+  cursor: pointer;
+  height: 30px;
+  width: 97%;
+  border-bottom: 2px solid rgb(213, 213, 213);
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
